@@ -1,0 +1,160 @@
+@use "../../public/mixins";
+
+$error-color: #F63636;
+
+
+.reg__form__row {
+    @include mixins.flex-mixin($justify: none, $align: none, $direction: column);
+    .reg__input__description {
+
+        .reg__input__label {
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .reg__input__error {
+            color: $error-color;
+            font-size: 14px;  
+            text-transform: lowercase;
+        }
+    }
+}
+
+$font-size: 20px;
+
+.form__content {
+    max-width: 340px;
+}
+
+#form__container {
+    margin-top: 5%;
+    font-family:  sans-serif;
+    color: #161D30;
+    @include mixins.flex-mixin($justify: center, $direction: column);
+    .title__wrapper {
+        font-size: $font-size;
+        font-family: sans-serif;
+        text-align: left;
+        h1 {
+            margin: 30px 0;
+            font-style: normal;
+            font-size: 36px;
+            line-height: 120%;
+        }
+    }
+    form {
+        width: 340px;
+        .inputs {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .input__wrapper {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            input[type=text], input[type=email] {
+                font-family: sans-serif;
+            }
+            input {
+                border: 0;
+                width: 100%;
+                padding: 10px 0;
+                font-style: normal;
+                font-weight: 400;
+                font-size: 16px;
+                line-height: 140%;
+                border-bottom: 1px solid #D6DBE7;
+                border: 0;
+                &::placeholder {
+                    color: #A0A9BE;
+                    font-family: sans-serif;
+                }
+
+                &:focus {
+                    outline: none;
+                    border: 0;
+                    border-bottom: 1px solid #4B7BF5;
+                }
+            }
+            img {
+                z-index: 1;
+                position: absolute;
+                margin-left: 320px;
+            }
+            border-bottom: 1px solid #D6DBE7;
+        }
+
+        .form__row {
+            @include mixins.flex-mixin($justify: space-between);
+            line-height: 140%;
+            .rem__password {
+                @include mixins.flex-mixin($justify: start, $gap: 6px);
+                font-size: 14px;
+            }
+
+            #forgotten__password {
+                font-style: normal;
+                font-weight: 500;
+                font-size: 14px;
+                text-decoration: none;
+                color: #4B7BF5;
+            }
+
+            #is__rem_password {
+                height: 20px;
+                width: 20px;
+                margin: 0;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+                appearance: none;
+                cursor: pointer;
+
+                &:checked {
+                    // background-image: url("../../../assets/icons/Checkbox_checked.svg");
+                    background-image: url("../../public/icons/form_icons/Checkbox_checked.svg");
+                    background-repeat: no-repeat;
+                    background-size: 100% 100%;
+                    background-color: #4B7BF5;
+                }
+            }
+        }
+
+        .enter__btn {
+            margin-top: 30px;
+        }
+
+        .form__footer {
+            color : #161D30;
+            font-size: 12px;
+            height: 17px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 140%;
+            margin-top: 10px;
+            text-align: center;
+            #user__agreement {
+                color: #4B7BF5;
+                cursor: pointer;
+                margin-left: 2px;
+            }
+        }
+    }
+}
+
+.modal__container {
+    position: absolute;
+    margin-top: 64px;
+    height: calc(100% - 64px);
+    width: 100%;
+    z-index: 1;
+    top: 0;
+    left: 0;
+}
+
+#position{
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    background-color: white;
+}
