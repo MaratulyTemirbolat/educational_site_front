@@ -5,16 +5,19 @@ import {
   useState,
   useMemo,
   useCallback,
-  FormEvent
+  FormEvent,
+  useEffect,
 } from "react";
 import { useSWRConfig } from "swr";
 import * as localForage from "localforage";
+import { useRouter } from 'next/navigation'
 
 import PasswordInput from "../shared/PasswordInput/PasswordInput";
 import Button from "../shared/Buttons/Button";
 
 import { isValidForm, isValidInputForm } from "../../tools/validators";
 import { fetcher } from "../../services/helpers/fetcher";
+import { useUser } from "@/store/user.store";
 
 type RegisterForm = {
   name: string;
@@ -28,6 +31,12 @@ type RegisterForm = {
 
 const RegisterForm = () => {
   const { mutate } = useSWRConfig();
+  const router = useRouter();
+  const [user, setUser] = useUser((state: any) => [
+    state.user,
+    state.setUser
+  ])
+  console.log(user)
   const [registerFormList, setRegisterFormList] = useState<Array<RegisterForm>>([
     {
       name: "email",
@@ -76,7 +85,11 @@ const RegisterForm = () => {
       setRegisterFormList([...newArray]);
     }
   }, [registerFormList]);
-  
+
+  useEffect(() => {
+    if (user) router.push("/");
+  }, [user]);
+
   const validForm = useMemo(() => isValidForm(registerFormList), [registerFormList]);
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -103,12 +116,24 @@ const RegisterForm = () => {
       } else {
         localForage.setItem("access", res.response["access"]);
         localForage.setItem("refresh", res.response["refresh"]);
-        alert("Вы успещно зарегестрировались!");
+        setUser({
+          id: res.response["data"]["id"],
+          email: res.response["data"]["email"],
+          firstName: res.response["data"]["first_name"],
+          lastName: res.response["data"]["last_name"],
+          datetime_created: new Date(res.response["data"]["datetime_created"]),
+          isDeleted: res.response["data"]["is_deleted"],
+          isStaff: res.response["data"]["is_staff"],
+          isActive: res.response["data"]["is_active"],
+          groups: res.response["data"]["groups"],
+          student: res.response["data"]["student"],
+          teacher: res.response["data"]["teacher"]
+        })
+        router.push("/");
       }
     }
   };
   const [modal, setModal] = useState(false);
-  console.log(validForm)
   return (
     <>
       <div id="login__container">
