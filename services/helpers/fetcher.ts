@@ -1,4 +1,4 @@
-type PomiseResponse = {
+export type PomiseResponse = {
     isOk: boolean;
     response: any;
 }

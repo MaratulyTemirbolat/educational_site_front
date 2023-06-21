@@ -3,7 +3,7 @@ import { persist, createJSONStorage } from 'zustand/middleware'
 
 import { User } from "../models/auths.models";
 
-type UseUser = {
+export type UseUser = {
     user: User | null,
     loading: boolean,
     error: Error | null,
