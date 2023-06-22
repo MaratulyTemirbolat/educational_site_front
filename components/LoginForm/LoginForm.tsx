@@ -10,7 +10,7 @@ import {
     useMemo,
 } from "react";
 
-import { useUserStore, UseUser, useStore } from "@/store/user.store";
+import { useUserStore, UseUser } from "@/store/user.store";
 import { isValidEmail } from "@/tools/validators";
 import PasswordInput from "../shared/PasswordInput/PasswordInput";
 import Button from "../shared/Buttons/Button";
@@ -18,7 +18,6 @@ import { useSWRConfig } from "swr";
 import { fetcher, PomiseResponse } from "@/services/helpers/fetcher";
 
 export default function LoginForm() {
-    const { count, inc }: any = useStore();
 
     const { mutate } = useSWRConfig();
     const [modal, setModal] = useState<boolean>(false);
