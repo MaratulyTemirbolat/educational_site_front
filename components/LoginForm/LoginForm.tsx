@@ -10,7 +10,7 @@ import {
     useMemo,
 } from "react";
 
-import { useUser, UseUser } from "@/store/user.store";
+import { useUserStore, UseUser, useStore } from "@/store/user.store";
 import { isValidEmail } from "@/tools/validators";
 import PasswordInput from "../shared/PasswordInput/PasswordInput";
 import Button from "../shared/Buttons/Button";
@@ -18,9 +18,11 @@ import { useSWRConfig } from "swr";
 import { fetcher, PomiseResponse } from "@/services/helpers/fetcher";
 
 export default function LoginForm() {
+    const { count, inc }: any = useStore();
+
     const { mutate } = useSWRConfig();
     const [modal, setModal] = useState<boolean>(false);
-    const [user, setUser] = useUser((state: UseUser) => [
+    const [user, setUser] = useUserStore((state: UseUser) => [
         state.user,
         state.setUser
     ]);
@@ -30,13 +32,14 @@ export default function LoginForm() {
     const [passwordError, setPasswordError] = useState<string>("");
     const [password, setPassword] = useState<string>("");
     const [generalError, setGeneralError] = useState<string>("");
-    
+    const [startedTypingEmail, setStartedTypingEmail] = useState<boolean>(false);
+    const [startedTypingPass, setStartedTypingPass] = useState<boolean>(false);
+
     useEffect(() => {if (user) router.push('/')}, [user]);
-    console.log(user);
     const isValidPassword = (): boolean => {
         if (!password.trim()) {
-            setPasswordError("Пароль должен быть предоставлен!");
-            return false;
+          if (startedTypingPass) setPasswordError("пароль должен быть предоставлен!");
+          return false;
         }
         setPasswordError("");
         return true;
@@ -44,8 +47,8 @@ export default function LoginForm() {
     const isValidEm = (): boolean => {
         const emailError: {errorMsg: string} = isValidEmail(email);
         if (emailError.errorMsg) {
-            setEmailError(emailError.errorMsg);
-            return false;
+          if (startedTypingEmail) setEmailError(emailError.errorMsg);
+          return false;
         }
         setEmailError("");
         return true;
@@ -106,7 +109,10 @@ export default function LoginForm() {
                     name="email"
                     placeholder="Введите email"
                     required
-                    onBlur={(e) => {setEmail(e.target.value);}}
+                    onBlur={(e) => {
+                      if (!startedTypingEmail) setStartedTypingEmail(true);
+                      setEmail(e.target.value);
+                    }}
                   />
                 </div>
               </div>
@@ -116,7 +122,12 @@ export default function LoginForm() {
                   <PasswordInput
                     name="password"
                     placeholder="Пароль"
-                    handleEventChange={(e) => {setPassword(e.target.value)}}
+                    handleEventChange={
+                      (e) => {
+                        if (!startedTypingPass) setStartedTypingPass(true);
+                        setPassword(e.target.value);
+                      }
+                    }
                   />
                 </div>
               </div>
