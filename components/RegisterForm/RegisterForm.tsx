@@ -9,7 +9,7 @@ import {
   useEffect,
 } from "react";
 import { useSWRConfig } from "swr";
-import * as localForage from "localforage";
+import localForage from "localforage";
 import { useRouter } from 'next/navigation'
 
 import PasswordInput from "../shared/PasswordInput/PasswordInput";
@@ -17,7 +17,7 @@ import Button from "../shared/Buttons/Button";
 
 import { isValidForm, isValidInputForm } from "../../tools/validators";
 import { fetcher } from "../../services/helpers/fetcher";
-import { useUser } from "@/store/user.store";
+import { UseUser, useUserStore } from "@/store/user.store";
 
 type RegisterForm = {
   name: string;
@@ -32,11 +32,13 @@ type RegisterForm = {
 const RegisterForm = () => {
   const { mutate } = useSWRConfig();
   const router = useRouter();
-  const [user, setUser] = useUser((state: any) => [
+  const [user, setUser, fetchUser] = useUserStore((state: UseUser) => [
     state.user,
-    state.setUser
+    state.setUser,
+    state.fetchUser,
   ])
-  console.log(user)
+
+  // console.log(user)
   const [registerFormList, setRegisterFormList] = useState<Array<RegisterForm>>([
     {
       name: "email",
@@ -87,6 +89,7 @@ const RegisterForm = () => {
   }, [registerFormList]);
 
   useEffect(() => {
+    if (!user) fetchUser();
     if (user) router.push("/");
   }, [user]);
 
