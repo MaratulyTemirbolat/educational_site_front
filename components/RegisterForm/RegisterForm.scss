@@ -105,7 +105,7 @@ $font-size: 20px;
                 @include mixins.flex-mixin($justify: space-between);
                 line-height: 140%;
                 .rem__password {
-                    @include mixins.flex-mixin($justify: start, $gap: 6px);
+                    @include mixins.flex-mixin($justify: flex-start, $gap: 6px);
                     font-size: 14px;
                 }
     
@@ -229,7 +229,7 @@ $font-size: 20px;
                 @include mixins.flex-mixin($justify: space-between);
                 line-height: 140%;
                 .rem__password {
-                    @include mixins.flex-mixin($justify: start, $gap: 6px);
+                    @include mixins.flex-mixin($justify: flex-start, $gap: 6px);
                     font-size: 14px;
                 }
     

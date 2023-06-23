@@ -51,7 +51,7 @@ export async function updateAccessToken(): Promise<{ ok: boolean, msg: string } 
 export async function isRefreshToken(): Promise<{ ok: boolean, msg: string }> {
     const refreshToken: string | null = await localforage.getItem("refresh");
     if (refreshToken) return { ok: true, msg: ""};
-    else return { ok: false, msg: "Авторизуйтесь повторно в систему." }
+    else return { ok: false, msg: "Авторизуйтесь повторно в систему." };
 }
 
 export async function getUserByToken(): Promise<User | null> {

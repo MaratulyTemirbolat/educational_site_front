@@ -35,6 +35,7 @@ export default function LoginForm() {
     const [startedTypingPass, setStartedTypingPass] = useState<boolean>(false);
 
     useEffect(() => {if (user) router.push('/')}, [user]);
+    console.log(user);
     const isValidPassword = (): boolean => {
         if (!password.trim()) {
           if (startedTypingPass) setPasswordError("пароль должен быть предоставлен!");

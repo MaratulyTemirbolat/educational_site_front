@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import { persist, createJSONStorage } from 'zustand/middleware';
+import localforage from "localforage";
 
 import { User } from "../models/auths.models";
 import { getUserByToken } from "@/services/auth.services";
@@ -37,6 +38,7 @@ export const useUserStore = create<UseUser>()(
             },
             clear() {
                 set({user: null});
+                localforage.clear();
             },
         }),
         {

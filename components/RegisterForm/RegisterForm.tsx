@@ -77,7 +77,7 @@ const RegisterForm = () => {
       errorMsg: " ",
     },
   ]);
-
+  
   const handleChangeInput = useCallback((e: any) => {
     const newArray = structuredClone(registerFormList);
     const { errorMsg } = isValidInputForm(e.target.name, e.target.value);
@@ -89,6 +89,7 @@ const RegisterForm = () => {
   }, [registerFormList]);
 
   useEffect(() => {
+    console.log(user);
     if (!user) fetchUser();
     if (user) router.push("/");
   }, [user]);
