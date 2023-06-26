@@ -15,7 +15,7 @@ export default function CoursesPage() {
           name="Подготовка к ЕНТ"
           img={ENTImage}
           rating={5.0}
-          nextLink={`/tracks/${1}/classes`}
+          nextLink={`/main/tracks/${1}/classes`}
         />
       </div>
     </section>

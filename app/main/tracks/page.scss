@@ -1,4 +1,4 @@
-@use "../../public/mixins";
+@use "../../../public/mixins";
 
 #track__page {
     margin-top: 20px;
@@ -9,7 +9,7 @@
     @include mixins.flex-mixin();
     color: white;
     width: 100%;
-    background-image: url("../../public/back/back.jpg");
+    background-image: url("../../../public/back/back.jpg");
     background-size: cover;
     background-repeat: no-repeat;
 }

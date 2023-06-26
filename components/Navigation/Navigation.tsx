@@ -74,7 +74,7 @@ export default function Navigation() {
                 </Link>
               </div>
               <div className="links">
-                <Link href="/tracks">
+                <Link href="/main/tracks">
                   <div className="link">
                       <div className="link__img">
                         <FontAwesomeIcon

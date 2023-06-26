@@ -22,7 +22,6 @@ export default function RootLayout({
           <Header />
         </header>
         <main>
-          <Navigation />
           {children}
         </main>
       </body>
