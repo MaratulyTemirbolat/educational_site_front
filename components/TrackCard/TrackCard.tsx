@@ -11,9 +11,10 @@ type TrackCardParameters = {
     img: any;
     name: string;
     rating: number;
+    nextLink: string;
 };
 
-export default function TrackCard({ id, img, name, rating}: TrackCardParameters) {
+export default function TrackCard({ id, img, name, rating, nextLink}: TrackCardParameters) {
   return (
     <div className="track__card__cont">
       <div className="track__card__upper">
@@ -34,7 +35,7 @@ export default function TrackCard({ id, img, name, rating}: TrackCardParameters)
       </div>
       <div className="track__card__lower">
         <div className="button__wrapper">
-          <Link href={`/courses/${id}/classes`}>
+          <Link href={nextLink}>
             <CardButton text="Просмотреть курсы" />
           </Link>
         </div>

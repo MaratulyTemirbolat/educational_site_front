@@ -1,11 +1,7 @@
 @use "../../public/mixins";
 
-header {
-    color: white;
-    background-color: rgb(57, 82,78);
-}
-
 #track__page {
+    margin-top: 20px;
     width: 100vw;
     position: absolute;
 }

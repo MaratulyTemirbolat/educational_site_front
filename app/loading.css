@@ -1,9 +1,4 @@
-* {
-	border: 0;
-	box-sizing: border-box;
-	margin: 0;
-	padding: 0;
-}
+
 :root {
 	--fg: #17181c;
 	--shade1: #727274;
@@ -28,6 +23,7 @@
     left: 0;
     width: 100vw;
     height: 100vh;
+	z-index: 150;
 }
 .loading__container {
 	margin: auto;

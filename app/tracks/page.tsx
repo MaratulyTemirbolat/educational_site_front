@@ -15,12 +15,7 @@ export default function CoursesPage() {
           name="Подготовка к ЕНТ"
           img={ENTImage}
           rating={5.0}
-        />
-        <TrackCard
-          id={2}
-          name="Подготовка к IELTS"
-          img={ENTImage}
-          rating={4.9}
+          nextLink={`/tracks/${1}/classes`}
         />
       </div>
     </section>
