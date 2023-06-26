@@ -174,7 +174,7 @@
     }
     #fake__checkbox {
         &:checked ~ .left__up {
-            opacity: 0;
+            display: none;
         }
     }
 
