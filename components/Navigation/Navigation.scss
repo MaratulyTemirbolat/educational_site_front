@@ -45,6 +45,10 @@
             height: 340px;
         }
     }
+    #fake__label {
+        top: 80px;
+        right: 30px;
+    }
 }
 
 .navigation__content {
@@ -54,6 +58,7 @@
     font-size: 20px;
     background-color: white;
     transition: all 1s;
+    z-index: 50;
     box-shadow:  0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1);
     .header__navigation {
         display: flex;
@@ -121,8 +126,7 @@
 }
 #fake__label {
     position: absolute;
-    bottom: 10px;
-    right: 10px;
+    z-index: 100;
     transition: all 1s;
     transform: rotate(0);
 }
@@ -170,7 +174,12 @@
     }
     #fake__checkbox {
         &:checked ~ .left__up {
-            right: -300px;
+            opacity: 0;
         }
+    }
+
+    #fake__label {
+        bottom: 10px;
+        right: 10px;
     }
 }

@@ -1,0 +1,75 @@
+@use "../../public/mixins";
+
+.track__card__cont {
+    @include mixins.flex-mixin($direction: column, $justify: space-between);
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: white;
+    border-radius: 20px;
+    border: 3px solid rgb(30, 178,166);
+    .track__card__upper {
+        width: 100%;
+        @include mixins.flex-mixin($gap: 20px, $justify: flex-start, $align: flex-start);
+
+        .track__name {
+            font-weight: 500;
+        }
+        .stars__rating {
+            @include mixins.flex-mixin($gap: 5px, $justify: flex-start);
+            color: rgb(30, 178,166);
+        }
+    }
+}
+
+.track__card__lower {
+    width: 100%;
+}
+
+.track__image__wrapper {
+    @include mixins.flex-mixin();
+    width: 50px;
+    height: 50px;
+    padding: 15px;
+    background-color: rgb(30,178,166);
+    border-radius: 50%;
+}
+
+@media screen and (max-width: 549px) {
+    .track__name {
+        font-size: 20px;
+    }
+    .track__card__cont {
+        height: 200px;
+    }
+    .stars__rating * {
+        width: 13px;
+    }
+    .track__image__wrapper {
+        * {
+            width: 35px;
+            height: 35px;
+        }
+        width: 30px;
+        height: 30px;
+    }
+}
+
+@media screen and (min-width: 550px) {
+    .track__card__cont {
+        width: 400px;
+        height: 270px;
+    }
+
+    .track__name {
+        font-size: 30px;
+        line-height: 45px;
+    }
+
+    .stars__rating *{
+        width: 18px;
+    }
+    .track__image__wrapper * {
+        width: 50px;
+        height: 50px;
+    }
+}

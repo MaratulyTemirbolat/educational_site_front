@@ -1,0 +1,54 @@
+@use "../../public/mixins";
+
+header {
+    color: white;
+    background-color: rgb(57, 82,78);
+}
+
+#track__page {
+    width: 100vw;
+    position: absolute;
+}
+.track__upper {
+    @include mixins.flex-mixin();
+    color: white;
+    width: 100%;
+    background-image: url("../../public/back/back.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+#tracks__title {
+    font-weight: normal;
+}
+
+.tracks__list {
+    @include mixins.flex-mixin($gap: 30px);
+    flex-wrap: wrap;
+    margin-top: -120px;
+    padding: 30px;
+}
+
+@media screen and (min-width: 550px) {
+    .track__upper {
+        min-height: 700px;
+    }
+    #tracks__title {
+        font-size: 60px;
+    }
+}
+
+@media screen and (max-width: 549px) {
+    #tracks__title {
+        font-size: 40px;
+    }
+    .track__upper {
+        min-height: 400px;
+    }
+}
+
+
+@media screen and (max-width: 370px) {
+    #tracks__title {
+        font-size: 33px;
+    }
+}
