@@ -1,0 +1,18 @@
+@use "../../../public/mixins";
+
+.class__subjects__container {
+  @include mixins.flex-mixin($direction: column);
+  margin-top: 40px;
+  .class__subject__list {
+    width: 100%;
+    @include mixins.flex-mixin($gap: 30px);
+    flex-wrap: wrap;
+  }
+  .class__subject__pagination {
+    width: 100%;
+    @include mixins.flex-mixin();
+  }
+  .class__subject__pagination {
+    margin: 40px 0;
+  }
+}

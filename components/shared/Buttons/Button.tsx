@@ -7,7 +7,7 @@ import { JSX } from "react";
 type ButtonProps = {
   text: string;
   isEnable: boolean;
-  handleSuccess: (() => void);
+  handleSuccess: (() => void) | undefined;
 }
 
 export default function Button(
