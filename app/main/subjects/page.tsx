@@ -1,4 +1,5 @@
 import ClassSubjectList from "@/components/ClassSubject/ClassSubjectList/ClassSubjectList";
+import FilterModal from "@/components/ClassSubject/ClassSubjectFilter/ClassSubjectFilter";
 
 type ClassSubjectPageProps = {
   searchParams: {
@@ -11,9 +12,8 @@ type ClassSubjectPageProps = {
 export default async function ClassSubjectsPage(
   { searchParams: {page, classID, genSubjectID} }: ClassSubjectPageProps
 ) {
-  console.log("ClassSubjectsPage", page, classID, genSubjectID);
   return (
-    <section>
+    <section style={{marginTop: "30px"}}>
       <ClassSubjectList
         page={page}
         classID={classID}

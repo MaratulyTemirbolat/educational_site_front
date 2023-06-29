@@ -15,4 +15,30 @@
   .class__subject__pagination {
     margin: 40px 0;
   }
+
+  .upper__part__class__subject {
+    display: flex;
+  }
+}
+
+@media screen and (min-width: 680px) {
+  .upper__part__class__subject {
+    flex-direction: row;
+    .class__subject__filter__wrapper {
+      min-width: 250px;
+      height: fit-content;
+    }
+  }
+}
+@media screen and (max-width: 679px) {
+  .upper__part__class__subject {
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    .class__subject__filter__wrapper {
+      width: 90%;
+      margin: 0 10px;
+      box-sizing: border-box;
+    }
+  }
 }

@@ -30,3 +30,17 @@ export const getPagePath = (
   else if (path.indexOf("?") != -1) return path + `&${urlName}=` + reqPage;
   return path + `?${urlName}=` + reqPage;
 };
+
+export const getReplacedInsertedParamToPath = (
+  path: string,
+  value: any,
+  searchParams: ReadonlyURLSearchParams,
+  keyName: string
+): string => {
+  if (searchParams.has(keyName)) {
+    const curValue: string | null = searchParams.get(keyName);
+    return path.replace(`${keyName}=${curValue}`, `${keyName}=${value}`);
+  }
+  else if (path.indexOf("?") != -1) return `${path}&${keyName}=${value}`;
+  return `${path}?${keyName}=${value}`;
+};

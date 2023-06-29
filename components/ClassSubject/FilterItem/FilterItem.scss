@@ -1,0 +1,55 @@
+@use "../../../public/mixins";
+
+.filter__item {
+    .filter__options {
+        transition: height 1s;
+        height: 200px;
+        overflow-y: scroll;
+        margin-left: 10px;
+        .filter__option {
+            @include mixins.flex-mixin($justify: flex-start, $gap: 5px);
+
+            .radio__option {
+                margin: 0;
+            }
+        }
+    }
+}
+
+.item__fake__checboxes {
+    display: none;
+    &:checked ~ label {
+        .icon__wrapper {
+            transform: rotate(180deg)
+        }
+    }
+    &:checked ~ .filter__options {
+        height: 0;
+        overflow-y: hidden;
+    }
+}
+
+
+.item__fake__checboxes ~ label {
+    @include mixins.flex-mixin($justify: flex-start);
+    margin-bottom: 15px;
+
+    .icon__wrapper {
+        width: 20px;
+        height: 20px;
+        @include mixins.flex-mixin();
+        transition: all 1s;
+    }
+    .title__name {
+        color: #039be5;
+        font-size: 17px;
+    }
+}
+
+
+
+@media screen and (min-width: 680px) {
+    .filter__item {
+        width: 100%;
+    }
+}
