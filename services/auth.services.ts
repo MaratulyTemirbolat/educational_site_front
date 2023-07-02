@@ -1,8 +1,6 @@
 import { HOST, TOKEN_KEY_NAME, } from "./index";
-import useSWR from "swr";
 import localforage from "localforage";
 import axios from "axios";
-import { fetcher } from "./helpers/fetcher";
 import { User } from "@/models/auths.models";
 
 type RegisterUserResponse = {
