@@ -16,6 +16,7 @@ export default function MessageInput({
   handleBtnClick,
 }: MessageInputProps) {
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
+  const [messageContent, setMessageContent] = useState("");
   useAutosizeTextArea(textAreaRef.current, messageContent);
 
   return (
@@ -27,6 +28,7 @@ export default function MessageInput({
         id="content"
         className="message__texarea"
         rows={1}
+        value={messageContent}
         placeholder="Напечатайте своё сообщение..."
       ></textarea>
       <div onClick={handleBtnClick} id="send__icon">
