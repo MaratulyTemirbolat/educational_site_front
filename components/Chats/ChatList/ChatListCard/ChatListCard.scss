@@ -1,0 +1,52 @@
+@use "../../../../public/mixins";
+
+
+.personal__chat__list{
+    box-sizing: border-box;
+    width: 100%;
+    padding: 15px 20px;
+    &:hover {
+        background-color:#5e616a;
+    }
+    @include mixins.flex-mixin($justify: flex-start, $gap: 10px);
+    .pers__chat__person__img {
+        background-color: white;
+        height: 50px;
+        width: 50px;
+        border-radius: 50%;
+        @include mixins.flex-mixin();
+        img {
+            height: 35px;
+            width: 35px;
+        }
+    }
+
+    .chat__user__data {
+        .chat__user__name {
+            color: white;
+            font-size: 14px;
+        }
+
+        .online__status {
+            .chat__status {
+                background-color: #ff725d;
+            }
+            color: gray;
+            font-size: 12px;
+            @include mixins.flex-mixin($justify: flex-start, $gap: 10px);
+        }
+    }
+}
+
+
+@media screen and (min-width: 676px) {
+    .chat__user__data{
+        @include mixins.flex-mixin($direction: column, $align: flex-start, $gap: 5px);
+    }
+}
+
+@media screen and (max-width: 675px) {
+    .chat__user__data{
+        // display: none;
+    }
+}

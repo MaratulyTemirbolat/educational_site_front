@@ -1,0 +1,95 @@
+$img-size: 18px;
+$user-img-size: 50px;
+
+.personal__chat {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: white;
+    .personal__chat__header {
+        box-sizing: border-box;
+        border-radius: 10px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 50px;
+        padding: 20px;
+        .chat__head__data {
+            display: flex;
+            gap: 20px;
+            .user__img__wrapper {
+                background-color: white;
+                border-radius: 50%;
+                border: 1px solid;
+                box-shadow:  0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1);
+                width: $user-img-size + 25px;
+                height: $user-img-size + 25px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                img {
+                    width: $user-img-size;
+                    height: $user-img-size;
+                }
+            }
+
+            .chat__user__info{
+                display: flex;
+                flex-direction: column;
+                gap: 5px;
+                .chat__user__name {
+                    margin-top: 5px;
+                    font-size: 22px;
+                    font-weight: bold;
+                }
+                .message__number {
+                    font-size: 14px;
+                    color: #7e818a;;
+                }
+            }
+        }
+
+        .is__favorite__img {
+            width: $img-size;
+            height: $img-size;
+        }
+    }
+
+    .messaging__container {
+        height: 100%;
+        overflow-y: scroll;
+    }
+
+    .personal__chat__footer {
+        display: flex;
+        align-items: flex-end;
+        padding-right: 15px;
+        padding-left: 2px;
+        .message__texarea {
+            resize:none;
+            border:none;
+            width:100%;
+            border-radius:3px;
+            font-size:13px;
+            padding: 5px;
+            line-height: 1.5;            
+            &:focus {
+                outline: none;
+            }
+        }
+        #send__icon {
+            font-size: 18px;
+            padding: 5px 8px;
+            border-radius: 50%;
+            transition: all 0.7s;
+            cursor: pointer;
+            &:hover {
+                background-color: rgb(78, 165, 245);
+                color: white;
+            }
+        }
+    }
+}

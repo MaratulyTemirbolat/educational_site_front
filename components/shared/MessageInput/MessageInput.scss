@@ -1,0 +1,23 @@
+.message__texarea {
+    resize:none;
+    border:none;
+    width:100%;
+    border-radius:3px;
+    font-size:13px;
+    padding: 5px;
+    line-height: 1.5;            
+    &:focus {
+        outline: none;
+    }
+}
+#send__icon {
+    font-size: 18px;
+    padding: 5px 8px;
+    border-radius: 50%;
+    transition: all 0.7s;
+    cursor: pointer;
+    &:hover {
+        background-color: rgb(78, 165, 245);
+        color: white;
+    }
+}

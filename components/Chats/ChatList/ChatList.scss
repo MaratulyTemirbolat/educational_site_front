@@ -1,0 +1,50 @@
+@use "../../../public/mixins";
+
+.user__chat__container {
+    @include mixins.flex-mixin($justify: flex-start);
+    margin-top: 20px;
+    height: 88vh;
+    width: 100vw;
+    .chat__list__container{
+        border-radius: 10px;
+        height: 100%;
+        background-color: rgb(59, 62, 73);
+        overflow-y: scroll;
+        .search__div {
+            width: 100%;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+    
+        .chats__list {
+            @include mixins.flex-mixin($direction: column, $align: flex-start);
+            box-sizing: border-box;
+            width: 100%;
+        }
+    }
+
+    .personal__chat__wrapper {
+        height: 100%;
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 676px) {
+    .search__div {
+        @include mixins.flex-mixin();
+    }
+    .chat__list__container{
+        width: 500px;
+    }
+}
+
+@media screen and (max-width: 675px) {
+    .search__div {
+        // display: none;
+    }
+    .chat__list__container{
+        // width: 110px;
+        width: 500px;
+        z-index: 10;
+    }
+}

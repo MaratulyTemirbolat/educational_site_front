@@ -1,0 +1,71 @@
+.message {
+    padding:10px 30px;
+
+    .message__user__info {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        margin-bottom: 5px;
+        .status__user {
+            display: block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: green;
+            margin-right: 3px;
+        }
+        div {
+            font-size: 13px;
+        }
+        .message__creation {
+            color: #bbb;
+        }
+    }
+
+    .message__triangle {
+        margin-left: 12px;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 0 10px 10px 10px;
+        border-color: transparent transparent #58b666 
+    }
+    
+
+    .message__content {
+        padding:20px;
+        color:#fff;
+        line-height:25px;
+        max-width:90%;
+        display:inline-block;
+        text-align:left;
+        border-radius:5px;
+        background-color:#58b666;
+    }
+}
+
+.me {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
+    .message__user__info {
+        flex-direction: row-reverse;
+        .status__user {
+            background-color:#6fbced;
+        }
+    }
+    
+    .message__lower__part {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        .message__triangle {
+            margin-right: 10px;
+            border-color: transparent transparent #6fbced; 
+        }
+        .message__content {
+            background-color:#6fbced;
+        }
+    }
+}
