@@ -123,12 +123,12 @@ const RegisterForm = () => {
         setUser({
           id: res.response["data"]["id"],
           email: res.response["data"]["email"],
-          firstName: res.response["data"]["first_name"],
-          lastName: res.response["data"]["last_name"],
-          datetime_created: new Date(res.response["data"]["datetime_created"]),
-          isDeleted: res.response["data"]["is_deleted"],
-          isStaff: res.response["data"]["is_staff"],
-          isActive: res.response["data"]["is_active"],
+          first_name: res.response["data"]["first_name"],
+          last_name: res.response["data"]["last_name"],
+          datetime_created: res.response["data"]["datetime_created"],
+          is_deleted: res.response["data"]["is_deleted"],
+          is_staff: res.response["data"]["is_staff"],
+          is_active: res.response["data"]["is_active"],
           groups: res.response["data"]["groups"],
           student: res.response["data"]["student"],
           teacher: res.response["data"]["teacher"]

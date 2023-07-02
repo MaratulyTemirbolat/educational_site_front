@@ -77,12 +77,12 @@ export default function LoginForm() {
                 setUser({
                     id: res.response["id"],
                     email: res.response["email"],
-                    firstName: res.response["first_name"],
-                    lastName: res.response["last_name"],
-                    datetime_created: new Date(res.response["datetime_created"]),
-                    isDeleted: res.response["is_deleted"],
-                    isStaff: res.response["is_staff"],
-                    isActive: res.response["is_active"],
+                    first_name: res.response["first_name"],
+                    last_name: res.response["last_name"],
+                    datetime_created: res.response["datetime_created"],
+                    is_deleted: res.response["is_deleted"],
+                    is_staff: res.response["is_staff"],
+                    is_active: res.response["is_active"],
                     groups: res.response["groups"],
                     student: res.response["student"],
                     teacher: res.response["teacher"]

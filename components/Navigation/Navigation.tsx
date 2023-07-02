@@ -130,7 +130,7 @@ export default function Navigation() {
             </div>
             <div className="user__info">
               <div className="user__full__name">
-                {user?.firstName} {user?.lastName}
+                {user?.first_name} {user?.last_name}
               </div>
               <div className="user__email">
                 {user?.email}
