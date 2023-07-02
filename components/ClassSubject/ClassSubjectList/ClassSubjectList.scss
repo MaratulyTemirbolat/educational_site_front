@@ -18,12 +18,14 @@
 
   .upper__part__class__subject {
     display: flex;
+    width: 100%;
   }
 }
 
 @media screen and (min-width: 680px) {
   .upper__part__class__subject {
     flex-direction: row;
+    gap: 30px;
     .class__subject__filter__wrapper {
       min-width: 250px;
       height: fit-content;
