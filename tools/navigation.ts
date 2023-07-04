@@ -1,7 +1,7 @@
 import { ReadonlyURLSearchParams } from "next/navigation";
 
-export const getFullPath = (queryParams: ReadonlyURLSearchParams, reqParams: Array<string>): string => {
-  let fullPath: string = "/main/subjects";
+export const getFullPath = (initialPath: string, queryParams: ReadonlyURLSearchParams, reqParams: Array<string>): string => {
+  let fullPath: string = initialPath;
   let isFound: boolean = false;
   let value: string | null = null;
   for(let k=0; k<reqParams.length; k++) {
