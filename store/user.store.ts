@@ -3,6 +3,7 @@ import { persist, createJSONStorage } from 'zustand/middleware';
 import localforage from "localforage";
 
 import { User } from "../models/auths.models";
+import { ClassSubjectShort } from "../models/subjects.models";
 import { getUserByToken } from "@/services/auth.services";
 
 export type UseUser = {
@@ -12,6 +13,7 @@ export type UseUser = {
     setUser: (user: User) => void,
     fetchUser: () => void,
     clear: () => void,
+    addRegisteredSubj: (classSubj: ClassSubjectShort) => void,
 };
 
 
@@ -23,7 +25,7 @@ export const useStore = create((set) => ({
 
 export const useUserStore = create<UseUser>()(
     persist(
-        (set) => ({
+        (set, get) => ({
             user: null,
             loading: false,
             error: null,
@@ -39,6 +41,13 @@ export const useUserStore = create<UseUser>()(
             clear() {
                 set({user: null});
                 localforage.clear();
+            },
+            addRegisteredSubj(classSubj: ClassSubjectShort) {
+                if (get().user && get().user?.student){
+                    const userClone = structuredClone(get().user);
+                    userClone?.student.registered_subjects.push(classSubj);
+                    set({ user: userClone });
+                }
             },
         }),
         {
