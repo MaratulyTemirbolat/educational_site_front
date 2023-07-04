@@ -43,7 +43,7 @@ export default function ClassSubjectCard(
       <div className="class__subj__links">
         <Link
           className="class__subj__link"
-          href={"#"}
+          href={`/main/subjects/${classSubject.id}`}
         >Просмотреть</Link>
       </div>
     </div>

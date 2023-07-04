@@ -28,7 +28,7 @@ export default function PaginationList(
         <div className="prev__link__div">
           <Link
             className="pagination__link"
-            href={getPagePath(currentLink, curPage-1, searchParams)}
+            href={getPagePath(currentLink, Number(curPage)-1, searchParams)}
           >Предыдущий</Link>    
         </div> 
       }
@@ -54,7 +54,7 @@ export default function PaginationList(
           <div className="next__link__div">
             <Link
               className="pagination__link"
-              href={getPagePath(currentLink, curPage + 1, searchParams)}
+              href={getPagePath(currentLink, Number(curPage) + 1, searchParams)}
             >Следующий</Link>
           </div>
         }

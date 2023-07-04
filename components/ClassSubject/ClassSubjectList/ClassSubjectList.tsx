@@ -80,7 +80,7 @@ export default function ClassSubjectList(
           <div className="class__subject__pagination">
             <PaginationList
               curPage={(page ? Number(page) : 1)}
-              currentLink={getFullPath(searchParams, ["classID", "page", "genSubjectID"])}
+              currentLink={getFullPath("/main/subjects", searchParams, ["classID", "page", "genSubjectID"])}
               maxPage={data.response.pagination.count}
               searchParams={searchParams}
             />

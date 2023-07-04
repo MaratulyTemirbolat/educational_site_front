@@ -2,7 +2,7 @@
 import "./LoginForm.scss";
 
 import { useRouter } from "next/navigation";
-import { setItem } from "localforage";
+import localforage from "localforage";
 import {
     useEffect,
     FormEvent,
@@ -72,8 +72,8 @@ export default function LoginForm() {
               console.log(res);
             if (!res?.isOk) setGeneralError(res?.response.response);
             else {
-                setItem("refresh", res.response["refresh"]);
-                setItem("access", res.response["access"]);
+                localforage.setItem("refresh", res.response["refresh"]);
+                localforage.setItem("access", res.response["access"]);
                 setUser({
                     id: res.response["id"],
                     email: res.response["email"],
