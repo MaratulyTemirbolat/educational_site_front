@@ -1,0 +1,62 @@
+@use "../../../public/mixins";
+
+.faq {
+    width: 100%;
+    .container {
+        @include mixins.flex-mixin($direction: column, $gap: 20px);  
+        .box {
+            background-color: #fff;
+            width: 70%;
+            border-radius: 10px;
+            .accordion {
+                display: flex;
+                justify-content: space-between;
+                width: 100%;
+                padding: 15px 20px;
+                margin: 0;
+                font-weight: 600;
+                border: none;
+                border-radius: 10px;
+                cursor: pointer;
+                transition: 0.5s;
+                box-sizing: border-box;
+                color: #1eb2a6;
+                background-color: #fff;
+                
+                &:hover {
+                    box-shadow: none;
+                    background-color: #1eb2a6;
+                    color: #fff;
+                }
+
+                h2 {
+                    font-weight: 500;
+                    margin: 0;
+                }
+                
+                span {
+                    display: flex;
+                    align-items: center;
+                    img {
+                        width: 20px;
+                        height: 20px;
+                    }
+                }
+            }
+
+            .text {
+                padding: 0 20px;
+                font-size: 17px;
+                display: flex;
+                align-items: center;
+                .topic__link {
+                    text-decoration: unset;
+                }
+            }
+        }  
+    }
+
+    .not-authorized, .no-topics {
+        color: red;
+    }
+}
