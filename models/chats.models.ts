@@ -10,6 +10,8 @@ export type ChatUser = {
 };
   
 export type StudentTeacherInChat = {
+  tought_subjects?: Array<any>;
+  status_subscription?: any;
   id: number;
   user: ChatUser;
 };
