@@ -118,7 +118,7 @@ export default function PersonalChat({
                 {user?.id != chat.student.user.id ? chat.student.user.last_name : chat.teacher.user.last_name}
               </div>
               <div className="message__number">
-                already {chat.messages.data.length} messages
+                already {messages.length} messages
               </div>
             </div>
 
