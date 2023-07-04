@@ -1,0 +1,67 @@
+.teach__modal__cont {
+    display: flex;
+    border-radius: 10px;
+    flex-wrap: wrap;
+    padding: 10px;
+    max-width: 350px;
+    box-sizing: border-box;
+    margin-top: 20px;
+    box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px;
+    .personal__teacher__data {
+        p {
+            margin: 0;
+            margin-top: 3px;
+        }
+    }
+    .subscr__buttons {
+        width: 100%;
+        .subscription {
+            .status_subscr {
+                border: 1px solid #dbdbdb;
+                color: #5672c4;
+                font-weight: 400;
+                width: fit-content;
+                padding: 5px 15px;
+                line-height: 1.375;
+                border-radius: 57px; 
+                color: white;
+                background-color: red;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 401px) {
+    .teach__modal__cont {
+        .personal__teacher__data {
+            p {
+                font-size: 17px;
+            }
+        }
+    }
+    .subscr__buttons {
+        .subscription {
+            font-size: 17px;
+        }
+    }
+}
+
+
+@media screen and (max-width: 400px) {
+    .teach__modal__cont {
+        .personal__teacher__data {
+            p {
+                font-size: 13px;
+            }
+            span.datetime__created {
+                font-size: 13px;
+            }
+        }
+    }
+    .subscr__buttons {
+        .subscription {
+            font-size: 13px;
+        }
+    }
+}
+
