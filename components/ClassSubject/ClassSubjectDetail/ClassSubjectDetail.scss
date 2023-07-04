@@ -1,0 +1,169 @@
+.class__subject__detail__div{
+  display: flex;
+  flex-direction: column;
+  padding: 0 3vw;
+
+  .class__subj__topics {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .topics__wrapper {
+        width: 100%;
+    }
+  }
+  .class__subject__info{
+    background-color: rgba(255, 255, 255, 0.685);
+    padding: 30px 2vw;
+    border-radius: 20px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    .class__subj__det__title {
+        font-weight: 500;
+        color: #00c4c9;
+        margin-top: 0;
+    }
+
+    .class__subj__det__body {
+        display: flex;
+        justify-content: space-around;
+
+        .class__subj__content {
+            display: flex;
+            flex-direction: column;
+            width: 70%;
+            margin-left: 5%;
+
+            .content__row {
+
+                .row__title + div {
+                    margin-left: 1%;
+                }
+
+                .tought__teachers__list, .classes, .general__subjects{
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 10px;
+                    .teacher, .class, .gen__subject {
+                        border: 1px solid #dbdbdb;
+                        color: #5672c4;
+                        font-weight: 400;
+                        width: fit-content;
+                        padding: 5px 15px;
+                        line-height: 1.375;
+                        border-radius: 57px;
+                        cursor: pointer;
+
+                        &:hover {
+                            background-color: #edf0f9;
+                        }
+                    }
+                }
+                .tought__teachers__list {
+                    .teacher__div {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                    }
+                }
+
+                .status, .datetime__created {
+                    border: 1px solid #dbdbdb;
+                    color: #5672c4;
+                    font-weight: 400;
+                    width: fit-content;
+                    padding: 5px 15px;
+                    line-height: 1.375;
+                    border-radius: 57px;
+                }
+                .status {
+                    background-color: red;
+                    color: white;
+                }
+                .green {
+                    background-color:  #29AB87;
+                }
+            }
+
+            .class__subj__buttons {
+                margin-top: 15px;
+                display: flex;
+                justify-content: space-around;
+                gap: 10px;
+                padding: 10px;
+                box-sizing: border-box;
+                .btn__wrapper {
+                    max-width: 300px;
+                }
+            }
+        }
+    }
+  }
+}
+
+@media screen and (min-width: 626px) {
+    .class__subject__info {
+        .class__subj__det__title {
+            font-size: 45px;
+        }
+    }
+    .class__subj__content {
+        .content__row {
+            .class__subj__description {
+                font-size: 15px;
+            }
+            .row__title {
+                font-size: 19px;
+            }
+        }
+      }
+}
+
+@media screen and (max-width: 865px) {
+    .class__subj__buttons {
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width: 625px) {
+    .class__subject__info {
+        .class__subj__det__title {
+            font-size: 35px;
+        }
+        .class__subj__det__body {
+          .class__subj__det__img {
+            img {
+                width: 150px;
+                height: auto;
+            }
+          }
+          .class__subj__content {
+            .content__row {
+                .class__subj__description {
+                    font-size: 15px;
+                }
+                .row__title {
+                    font-size: 17px;
+                }
+                .tought__teachers__list, .classes, .status, .datetime__created {
+                    font-size: 14px;
+                }
+            }
+          }
+        }
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .class__subject__info {
+        .class__subj__det__title {
+            font-size: 30px;
+        }
+        .class__subj__det__body {
+          .class__subj__det__img {
+            img {
+                width: 100px;
+                height: auto;
+            }
+          }  
+        }
+    }
+}
