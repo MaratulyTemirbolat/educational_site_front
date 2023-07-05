@@ -1,0 +1,13 @@
+.answer__option {
+    display: flex;
+    align-items: center;
+    gap: 10%;
+    .answer__detail {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        input[type="radio"] {
+            margin: 0;
+        }
+    }
+}
