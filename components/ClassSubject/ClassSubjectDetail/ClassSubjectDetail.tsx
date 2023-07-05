@@ -18,10 +18,12 @@ import {
   fetchClassSubjectTeachers,
   registerForSubject,
 } from "@/services/subjects.services";
+import { generateQuiz, SUBJECT_QUIZ_TYPE } from "@/services/tests.services";
 import { createChat } from "@/services/chats.services";
 import { useUserStore, UseUser } from "@/store/user.store";
 import InformMessage from "@/components/shared/InformMessage/InformMessage";
 import TeacherModal from "../TeacherModal/TeacherModal";
+import { useTestStore, TestStore } from "@/store/tests.store";
 
 type ClassSubjectDetailProps = {
   id: number;
@@ -43,6 +45,9 @@ export default function ClassSubjectDetail(
     state.user,
     state.fetchUser,
     state.addRegisteredSubj
+  ]);
+  const [setQuiz] = useTestStore((state: TestStore) => [
+    state.setQuiz
   ]);
   const router = useRouter();
   const isRegistered: boolean = useMemo(() => {
@@ -98,6 +103,21 @@ export default function ClassSubjectDetail(
       }
       setInformMsg(res.response.response);
     })
+  };
+
+  const handleTakingTest = (): void => {
+    if (classSubject) {
+      generateQuiz(
+        classSubject.name,
+        SUBJECT_QUIZ_TYPE,
+        classSubject.general_subject.id
+      ).then(resp => {
+        if (resp.isOk) {
+          setQuiz(resp.response.data);
+          router.push("/main/tests/taketest");
+        }
+      });
+    }
   };
 
   const handleCloseInformMessage = useCallback(() => {
@@ -215,7 +235,7 @@ export default function ClassSubjectDetail(
                   <Button
                     text="Пройти тест"
                     isEnable={true}
-                    handleSuccess={() => {}}
+                    handleSuccess={handleTakingTest}
                   />
                 </div>}
               </div>

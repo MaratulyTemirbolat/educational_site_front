@@ -11,7 +11,7 @@
 .upper__part__navigation {
     width: 100%;
 }
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 500px) {
     .navigation__content {
         position: static;
         margin: 0 5vw;
@@ -46,7 +46,7 @@
         }
     }
     #fake__label {
-        top: 80px;
+        top: 90px;
         right: 30px;
     }
 }
@@ -125,7 +125,7 @@
     }
 }
 #fake__label {
-    position: absolute;
+    position: fixed;
     z-index: 100;
     transition: all 1s;
     transform: rotate(0);
@@ -144,9 +144,9 @@
 }
 
 
-@media screen and (min-width: 401px) {
+@media screen and (min-width: 501px) {
     .navigation__content {
-        position: absolute;
+        position: fixed;
         margin-top: 10vh;
         right: 10px;
         width: fit-content;
@@ -179,7 +179,35 @@
     }
 
     #fake__label {
-        bottom: 10px;
         right: 10px;
+        top: 22px
+    }
+}
+
+@media screen and (min-width: 501px) and (max-width: 601px) {
+    #fake__label {
+        right: 10px;
+        top: 18px
+    }
+}
+
+@media screen and (min-width: 601px) {
+    #fake__label {
+        right: 10px;
+        top: 25px
+    }
+}
+
+@media screen and (min-width: 1001px) {
+    #fake__label {
+        right: 10px;
+        top: 28px
+    }
+}
+
+@media screen and (min-width: 1301px) {
+    #fake__label {
+        right: 10px;
+        top: 32px
     }
 }

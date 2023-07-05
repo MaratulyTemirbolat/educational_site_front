@@ -2,7 +2,6 @@
 
 .header__cont {
     @include mixins.flex-mixin($justify: space-between);
-    padding: 0 5vw;
     font-family: sans-serif;
     padding-top: 15px;
     padding-bottom: 15px;
@@ -42,6 +41,8 @@
 
 @media screen and (max-width: 600px) {
     .header__cont {
+        padding-right: 5vw;
+        padding-left: 5vw;
         .header__left {
             h1 {
                 font-size: 25px;
@@ -81,8 +82,10 @@
     }
 }
 
-@media screen and (min-width: 550px) {
+@media screen and (min-width: 600px) {
     .header__cont {
+        padding-right: 5vw;
+        padding-left: 5vw;
         .header__left {
             h2 {
                 font-size: 16px;
@@ -95,5 +98,12 @@
                 height: 30px;
             }
         }
+    }
+}
+
+@media screen and (max-width: 870px) and (min-width: 500px) {
+    .header__cont {
+        padding-right: 50px;
+        padding-left: 50px;
     }
 }
