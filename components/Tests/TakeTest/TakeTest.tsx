@@ -65,7 +65,8 @@ export default function TakeTest() {
           resetStore();
           router.push(`/main/tests/${id}`);
         } else {
-
+          setIsError(true);
+          setInformMsg(resp.response.response);
         }
       })
     };
