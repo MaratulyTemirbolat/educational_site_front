@@ -1,0 +1,28 @@
+.tests__list__container {
+    display: flex;
+    justify-content: center;
+    .tests__list__wrapper {
+        background-color: white;
+        box-sizing: border-box;
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        border-radius: 25px;
+        padding: 20px 25px;
+        .tests__lists {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            a {
+                color: black;
+                text-decoration: none;
+            }
+        }
+
+        .tests__pagination {
+            display: flex;
+            justify-content: center;
+        }
+    }
+}

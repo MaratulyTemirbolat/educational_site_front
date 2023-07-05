@@ -1,0 +1,64 @@
+.test__item__card {
+    width: 100%;
+    display: flex;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    gap: 15px;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
+    cursor: pointer;
+    .test__item__card__square {
+        width: 100px;
+    }
+    .test__item__card__info {
+        p {
+            margin: 0;
+            margin-bottom: 3px;   
+        }
+        .test__item__id, .test__item__name {
+            font-weight: bold;
+        }
+        .test__item__type, .test__item__date__time {
+            color: gray;
+        }
+    }
+}
+
+@media screen and (min-width: 620px) {
+    .test__item__card {
+        .test__item__card__square {
+            height: 100px;
+        }
+        .test__item__card__info {
+            .test__item__id, .test__item__name {
+                font-size: 22px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 620px) {
+    .test__item__card {
+        .test__item__card__info {
+            .test__item__id, .test__item__name {
+                font-size: 16px;
+            }
+            .test__item__type, .test__item__date__time {
+                font-size: 13px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 380px) {
+    .test__item__card {
+        .test__item__card__info {
+            .test__item__id, .test__item__name {
+                font-size: 14x;
+            }
+            .test__item__type, .test__item__date__time {
+                font-size: 11px;
+            }
+        }
+    }
+}
