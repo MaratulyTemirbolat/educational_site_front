@@ -1,0 +1,47 @@
+.email__sharing__div {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    padding: 7% 5%;
+    box-sizing: border-box;
+    background-color: rgb(126, 186, 242);
+    .email__sharing__title {
+        font-size: 30px;
+        color: white;
+    }
+    .input__email__sharing {
+        width: 45%;
+    }
+}
+
+@media screen and (max-width: 904px) {
+    .email__sharing__div {
+        .email__sharing__title {
+            font-size: 20px;
+        }
+    } 
+}
+
+@media screen and (max-width: 680px) {
+    .email__sharing__div {
+        .email__sharing__title {
+            width: 40%;
+        }
+        .input__email__sharing {
+            width: 55%;
+        }
+    } 
+}
+
+
+@media screen and (max-width: 480px) {
+    .email__sharing__div {
+        .email__sharing__title {
+            font-size: 18px;
+        }
+        .input__email__sharing {
+            width: 55%;
+        }
+    } 
+}

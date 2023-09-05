@@ -5,7 +5,9 @@ import {
   useCallback,
   useEffect,
   useState,
+  useMemo,
 } from "react"; 
+import { useRouter } from "next/navigation";
 
 import ChatListCard from "./ChatListCard/ChatListCard";
 import SearchInput from "@/components/shared/SearchInput/SearchInput";
@@ -26,7 +28,8 @@ export default function ChatList() {
     state.user,
     state.fetchUser,
   ]);
-  const [isUser, setIsUser] = useState<boolean>(false);
+  const router = useRouter();
+  const isUser: boolean = useMemo(() => user ? true : false, [user]);
   const [joinedChats, setJoinedChats] = useState<Array<PersonalChatType>>([]);
   const [curChatId, setCurChatId] = useState<number | null>(null);
   const handleChatClick = (chatID: number) => {
@@ -34,7 +37,7 @@ export default function ChatList() {
   };
   useEffect(() => {
     if (!user) fetchUser();
-    if (user) setIsUser(true);
+    if (!user) router.push("/login");
     if (joinedChats.length == 0) {
       getUserChats()
       .then(value => {
@@ -46,7 +49,7 @@ export default function ChatList() {
 
   return (
     <>
-      <div className="user__chat__container">
+      {isUser && <div className="user__chat__container">
         <div className="chat__list__container">
           <div className="search__div">
             <SearchInput
@@ -78,7 +81,7 @@ export default function ChatList() {
         <div className="personal__chat__wrapper">
           {curChatId && <PersonalChat chatId={curChatId}/>}
         </div>
-      </div>
+      </div>}
     </>
   );
 };

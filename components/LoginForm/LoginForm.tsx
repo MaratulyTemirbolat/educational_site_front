@@ -20,7 +20,6 @@ import { fetcher, PomiseResponse } from "@/services/helpers/fetcher";
 export default function LoginForm() {
 
     const { mutate } = useSWRConfig();
-    const [modal, setModal] = useState<boolean>(false);
     const [user, setUser] = useUserStore((state: UseUser) => [
         state.user,
         state.setUser
@@ -34,7 +33,7 @@ export default function LoginForm() {
     const [startedTypingEmail, setStartedTypingEmail] = useState<boolean>(false);
     const [startedTypingPass, setStartedTypingPass] = useState<boolean>(false);
 
-    useEffect(() => {if (user) router.push('/')}, [user]);
+    useEffect(() => {if (user) router.push('/main/')}, [user]);
     console.log(user);
     const isValidPassword = (): boolean => {
         if (!password.trim()) {
@@ -149,10 +148,14 @@ export default function LoginForm() {
               />
             </div>
             <div className="form__footer">
-              Продолжая, вы принимаете
-              <span onClick={() => setModal(true)} id="user__agreement">
-                Пользовательское соглашение
-              </span>
+              У вас нет аккаунта?
+              <a
+                id="user__agreement"
+                href="/register"
+                style={{ textDecoration: "none" }}
+              >
+                Зарегистрироваться
+              </a>
             </div>
           </form>
         </div>

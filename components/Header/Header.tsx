@@ -1,15 +1,17 @@
 import "./Header.scss";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFacebookF, faInstagram, faTwitter, faYoutube } from "@fortawesome/free-brands-svg-icons";
+import { faFacebookF, faTwitter, faYoutube } from "@fortawesome/free-brands-svg-icons";
 import Link from "next/link";
 
 const Header = () => {
   return (
     <div className="header__cont">
         <div className="header__left">
-          <h1>ACADEMY</h1>
-          <h2>ЦЕНТ ПОДГОТОВКИ К ЕНТ</h2>
+          <Link href={"/main/"}>
+            <h1>ACADEMY</h1>
+            <h2>ЦЕНТ ПОДГОТОВКИ К ЕНТ</h2>
+          </Link>
         </div>
         <div className="header__right">
           <Link href="https://www.facebook.com/">

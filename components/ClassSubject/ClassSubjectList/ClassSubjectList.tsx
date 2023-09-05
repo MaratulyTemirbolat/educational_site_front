@@ -43,8 +43,7 @@ export default function ClassSubjectList(
   ])
   const getBackLink: string = useMemo<string>(() => {
     return HOST+`/api/v1/subjects/class_subjects?page=${page ? page : 1}${classID ? `&class_id=${classID}`: ""}${genSubjectID ? `&subject_id=${genSubjectID}`: ""}`;
-  }, [page, classID, genSubjectID])
-
+  }, [page, classID, genSubjectID]);
   const { data, error, isLoading } = useSWR<{isOk: boolean, response: ClassSubjectListPaginatedResponse}>(
     getBackLink,
     fetcher

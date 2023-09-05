@@ -1,9 +1,12 @@
 "use client";
 import "./GeneralSubjectCardItem.scss";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 import { GeneralSubject } from "@/models/subjects.models";
+import { useClassGenSubjectStore, ClassGenSubjectStore } from "@/store/subjects.store";
 
+import Button from "@/components/shared/Buttons/Button";
 import RocketIMG from "@/public/icons/common/rocket-solid.svg";
 import CalculatorIMG from "@/public/icons/common/calculator-solid.svg";
 import ComputerIMG from "@/public/icons/common/computer-solid.svg";
@@ -20,12 +23,21 @@ const imgs: string[] = [
 
 type GeneralSubjectCardItemProps = {
   generalSubject: GeneralSubject;
+  classID: string;
 };
 
 
 export default async function GeneralSubjectCardItem(
-  { generalSubject }: GeneralSubjectCardItemProps
+  {
+    generalSubject,
+    classID
+  }: GeneralSubjectCardItemProps
 ) {
+  const [setClassID, setGenSubjectID] = useClassGenSubjectStore((state: ClassGenSubjectStore) => [
+    state.setClassID,
+    state.setGenSubjectID,
+  ]);
+  const router = useRouter();
   return (
     <>
       <div className="card">
@@ -41,7 +53,15 @@ export default async function GeneralSubjectCardItem(
                 Предмет: <span className={generalSubject.is_deleted ? "not-active" : "active"}>{generalSubject.is_deleted? "неактивный" : "активный"}</span> <br />
                 Дата создания: {generalSubject.datetime_created}
             </p>
-            <a href="#">Read More</a>
+            <Button
+              text="Просмотреть"
+              isEnable={true}
+              handleSuccess={() => {
+                setClassID(classID);
+                setGenSubjectID(String(generalSubject.id));
+                router.push("/main/subjects");
+              }}
+            />
           </div>
         </div>
       </div>

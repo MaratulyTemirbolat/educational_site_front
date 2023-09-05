@@ -1,8 +1,9 @@
 "use client";
 
 import useSWR from "swr";
-import CustomLoading from "@/app/loading";
+import Link from "next/link";
 
+import CustomLoading from "@/app/loading";
 import { fetcher } from "@/services/helpers/fetcher";
 import { Class } from "@/models/subjects.models";
 import ClassCard from "./ClassCard";
@@ -27,11 +28,16 @@ export default function ClassList() {
         {data && <div className="classes">
           <ol className="classes__list">
             {data.response.data.map((myClass: Class, ind: number) => (
-              <ClassCard
+              <Link
                 key={myClass.id}
-                myClass={myClass}
-                iconName={ind >= classImages.length ? classImages[ind%classImages.length] : classImages[ind]}
-              />
+                href={`/main/tracks/1/classes/general_subjects?classID=${myClass.id}`}
+                style={{ color: "black", textDecoration: "unset" }}
+              >
+                <ClassCard
+                  myClass={myClass}
+                  iconName={ind >= classImages.length ? classImages[ind%classImages.length] : classImages[ind]}
+                />
+              </Link>
             ))}
           </ol>
         </div>}

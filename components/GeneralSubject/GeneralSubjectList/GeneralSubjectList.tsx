@@ -30,7 +30,7 @@ export default function GeneralSubjectList({ classId, trackID }: GeneralSubjectL
       {isLoading && <CustomLoading />}
       {data?.response && <div className="general__subject__container">
         {data.response.data.map(
-          genSubject => <GeneralSubjectCardItem key={genSubject.id} generalSubject={genSubject}/>
+          genSubject => <GeneralSubjectCardItem key={genSubject.id} generalSubject={genSubject} classID={classId ? classId : "1"}/>
           )
         }
       </div>}

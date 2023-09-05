@@ -91,7 +91,7 @@ const RegisterForm = () => {
   useEffect(() => {
     console.log(user);
     if (!user) fetchUser();
-    if (user) router.push("/");
+    if (user) router.push("/main/");
   }, [user]);
 
   const validForm = useMemo(() => isValidForm(registerFormList), [registerFormList]);
@@ -133,7 +133,7 @@ const RegisterForm = () => {
           student: res.response["data"]["student"],
           teacher: res.response["data"]["teacher"]
         })
-        router.push("/");
+        router.push("/main/");
       }
     }
   };
@@ -141,7 +141,6 @@ const RegisterForm = () => {
   return (
     <>
       <div id="login__container">
-        {!modal && (
           <div id="form__container">
             <div className="form__content">
               <div className="title__wrapper">
@@ -200,20 +199,19 @@ const RegisterForm = () => {
                 <div className="enter__btn">
                   <Button
                     isEnable={validForm}
-                    text={"Зарегестироваться"}
+                    text={"Зарегистироваться"}
                     handleSuccess={() => {}}
                   />
                 </div>
                 <div className="form__footer">
-                  Продолжая, вы принимаете
-                  <span onClick={() => setModal(true)} id="user__agreement">
-                    Пользовательское соглашение
-                  </span>
+                  Уже есть личный аккаунт ?
+                  <a href="/login" id="user__agreement">
+                    Авторизоваться
+                  </a>
                 </div>
               </form>
             </div>
           </div>
-        )}
         {/* {modal && <ModalAgreement handleModal={handleModal} />} */}
       </div>
     </>

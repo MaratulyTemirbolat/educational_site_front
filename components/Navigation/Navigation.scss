@@ -15,7 +15,7 @@
     .navigation__content {
         position: static;
         margin: 0 5vw;
-        height: 40px;
+        height: 80px;
         overflow-y: hidden;
         transition: all 1s;
     }
@@ -42,11 +42,12 @@
     #fake__checkbox {
         &:checked ~ .left__up {
             right: -300px;
-            height: 340px;
+            height: 400px;
         }
     }
     #fake__label {
-        top: 90px;
+        position: absolute;
+        top: 95px;
         right: 30px;
     }
 }
@@ -125,7 +126,6 @@
     }
 }
 #fake__label {
-    position: fixed;
     z-index: 100;
     transition: all 1s;
     transform: rotate(0);
@@ -179,8 +179,16 @@
     }
 
     #fake__label {
+        position: fixed;
         right: 10px;
         top: 22px
+    }
+}
+
+@media screen and (min-width: 391px) and (max-width: 500px) {
+    #fake__label {
+        right: 40px;
+        top: 105px
     }
 }
 

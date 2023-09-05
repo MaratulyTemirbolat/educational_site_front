@@ -1,9 +1,11 @@
-import Navigation from "@/components/Navigation/Navigation"
+import EmailSharing from "@/components/EmailSharing/EmailSharing"
+import WelcomSection from "@/components/WelcomeSection/WelcomeSection"
 
 export default function Home() {
   return (
     <>
-      <h1>hekko</h1>
+      <WelcomSection />
+      <EmailSharing />
     </>
   )
 }

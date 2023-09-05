@@ -47,4 +47,21 @@ export async function registerForSubject(id: number): Promise<PomiseResponse> {
     )
   }
   return { isOk: false, response: { data: "Авторизуйтесь заново"} };
-}
+};
+
+export async function fetchTopic(id: number): Promise<PomiseResponse> {
+  const accessToken: string | null = await localforage.getItem("access");
+  if (accessToken) {
+    return fetcher(
+      `${HOST}/api/v1/subjects/topics/${id}`,
+      {
+        headers: {
+          Authorization: `${TOKEN_KEY_NAME} ${accessToken}`
+        }
+      }
+    )
+  }
+  return { isOk: false, response: { data: "Авторизуйтесь заново"} };
+};
+
+

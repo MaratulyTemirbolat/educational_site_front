@@ -44,8 +44,6 @@ export default function FilterModal() {
     state.setGenSubjectID
   ]);
   const pathNoParams: string = usePathname();
-  // const router = useRouter();
-  // const searchParams: ReadonlyURLSearchParams = useSearchParams();
   const classes = useSWR<{ isOk: boolean, response: { data: Array<Class> }}>(
     "http://localhost:8000/api/v1/subjects/classes",
     fetcher
@@ -54,11 +52,9 @@ export default function FilterModal() {
     "http://localhost:8000/api/v1/subjects/general_subjects",
     fetcher
   );
-  console.log(pathNoParams)
   const handleChaneOption = (searchName: string, id: number) => {
     const newObj: any = Object.assign({}, filterOptions);
     newObj[searchName] = String(id);
-    console.log(newObj);
     setFilterOptions(newObj);
   };
   const handleConfirm = (): void => {
@@ -74,7 +70,6 @@ export default function FilterModal() {
       //   }
       // }
       // router.push(path);
-      console.log(filterOptions)
       setClassID(filterOptions.classID);
       setGenSubjectID(filterOptions.genSubjectID);
   };

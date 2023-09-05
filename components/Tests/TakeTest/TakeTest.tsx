@@ -26,6 +26,7 @@ export default function TakeTest() {
   const [questionNumber, setQuestionNumber] = useState<number>(0);
   const [isError, setIsError] = useState<boolean>(false);
   const [informMsg, setInformMsg] = useState<string>("");
+  const [quizID, setQuizID] = useState<number | null>(null);
   const isGeneratedQuiz: boolean = useMemo(
     () => generatedQuiz ? true : false,
     [generatedQuiz]
@@ -35,6 +36,7 @@ export default function TakeTest() {
     if (!user) fetchUser();
     if (!user) router.push("/login");
     if (!generatedQuiz) router.push("/main/tests");
+    else if (generatedQuiz) setQuizID(generatedQuiz.id); 
   }, [user, generatedQuiz]);
 
   const handleAnswerSelect = (questionID: number, answerID: number): void => {
@@ -45,7 +47,10 @@ export default function TakeTest() {
         question: questionID,
         user_answer: answerID
       }
-      if (foundInd == -1) setAnswers([...answers, userAnsw]);
+      if (foundInd == -1) {
+        setAnswers([...answers, userAnsw]);
+        setQuestionNumber(prevValue => prevValue + 1);
+      }
       else if (foundInd != -1) setAnswers(answers => [...(answers.filter(answ => answ.question != questionID)), userAnsw]);
     }
   };
@@ -61,9 +66,8 @@ export default function TakeTest() {
       .then(resp => {
         console.log(resp)
         if (resp.isOk) {
-          const id: number = generatedQuiz.id;
           resetStore();
-          router.push(`/main/tests/${id}`);
+          router.push(`/main/tests/${quizID}`);
         } else {
           setIsError(true);
           setInformMsg(resp.response.response);
@@ -74,11 +78,11 @@ export default function TakeTest() {
 
   return (
     <div className="test__detail__cont">
-      {isGeneratedQuiz && <div className="quiz__detaill__data">
+      {isGeneratedQuiz ?  <div className="quiz__detaill__data">
         <TestHeader
           quiz={generatedQuiz}
-          correctQuestions={isGeneratedQuiz ? questionNumber+1 : 0}
-          totalQuestion={0}
+          correctQuestions={questionNumber}
+          totalQuestion={generatedQuiz ? generatedQuiz.attached_questions.length : 0}
         />
         <hr />
         <div className="take__test__body">
@@ -91,6 +95,11 @@ export default function TakeTest() {
               />
             )
             )}
+            {
+              generatedQuiz?.attached_questions &&
+              generatedQuiz.attached_questions.length == 0 && 
+              <h1 style={{textAlign: "center"}}>Извините, но, кажется, у нас нет вопросов в базе &#128575;</h1>
+            }
             <div className="take__test__btn__wrapper">
               <Button
                 text="Завершить"
@@ -99,8 +108,7 @@ export default function TakeTest() {
               />
             </div>
         </div>
-      </div>}
-      <h1>Нет активных тестов на данный момент!</h1>
+      </div> : <h1>Нет активных тестов на данный момент!</h1>}
       {
         informMsg &&
         <InformMessage

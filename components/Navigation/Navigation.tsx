@@ -1,7 +1,7 @@
 "use client"; 
 import "./Navigation.scss";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -23,13 +23,11 @@ export default function Navigation() {
     state.user,
     state.clear,
   ]);
-  const [isUser, setIsUser] = useState<boolean>(false);
-  
+  const isUser: boolean = useMemo(() => user ? true : false, [user]);
   const signOutHandle = () => {
     if (user) clear();
   }
 
-  useEffect(() => {setIsUser(user? true : false);}, [user]);
   return (
     <section>
       <input type="checkbox" id="fake__checkbox" />
@@ -62,7 +60,7 @@ export default function Navigation() {
                 Меню
               </div>
               <div className="links">
-                <Link href="/">
+                <Link href="/main">
                   <div className="link">
                       <div className="link__img">
                         <FontAwesomeIcon
@@ -81,50 +79,50 @@ export default function Navigation() {
                           icon={faBook}
                         />
                       </div>
-                      Курсы
+                      Направления
                   </div>
                 </Link>
               </div>
-              <div className="links">
-                <Link href="/">
+              {isUser && <div className="links">
+                <Link href="/main/chats">
                   <div className="link">
                       <div className="link__img">
                         <FontAwesomeIcon
                           icon={faPeopleGroup}
                         />
                       </div>
-                      Команда
+                      Чаты
                   </div>
                 </Link>
-              </div>
-              <div className="links">
-                <Link href="/">
+              </div>}
+              {isUser && <div className="links">
+                <Link href="/main/subjects">
                   <div className="link">
                       <div className="link__img">
                         <FontAwesomeIcon
                           icon={faTag}
                         />
                       </div>
-                      Цены
+                      Предметы
                   </div>
                 </Link>
-              </div>
-              <div className="links">
-                <Link href="/">
+              </div>}
+              {isUser && <div className="links">
+                <Link href="/main/tests">
                   <div className="link">
                       <div className="link__img">
                         <FontAwesomeIcon
                           icon={faAddressBook}
                         />
                       </div>
-                      Контакты
+                      Тесты
                   </div>
                 </Link>
-              </div>
+              </div>}
           </div>
         </div>
         <div className="bottom__part__nav">
-          { isUser && <div className="auth__user__div">
+          {isUser && <div className="auth__user__div">
             <div className="user__logo">
               <Image src={UserIMG} alt="User Image"/>
             </div>
@@ -148,7 +146,7 @@ export default function Navigation() {
           {!isUser && <div className="reg__login__cont">
             <Link href="/login">Авторизоваться</Link>
             <span className="is__visible">|</span>
-            <Link href="/register">Зарегестрироваться</Link>
+            <Link href="/register">Зарегистрироваться</Link>
           </div>}
         </div>
       </nav>
